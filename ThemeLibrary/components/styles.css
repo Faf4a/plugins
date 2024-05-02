@@ -1,3 +1,8 @@
+[data-tab-id="ThemeLibrary"]::before {
+    -webkit-mask: var(--si-vencordthemes) center/contain no-repeat !important;
+    mask: var(--si-vencordthemes) center/contain no-repeat !important;
+}
+
 .vce-theme-info {
     padding: 0.5rem;
     margin-bottom: 10px;
