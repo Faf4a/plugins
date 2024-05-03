@@ -1,6 +1,6 @@
 [data-tab-id="ThemeLibrary"]::before {
-    -webkit-mask: var(--si-vencordthemes) center/contain no-repeat !important;
-    mask: var(--si-vencordthemes) center/contain no-repeat !important;
+    -webkit-mask: var(--si-widget) center/contain no-repeat !important;
+    mask: var(--si-widget) center/contain no-repeat !important;
 }
 
 .vce-theme-info {
