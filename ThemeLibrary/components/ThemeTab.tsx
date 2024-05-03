@@ -73,6 +73,8 @@ function ThemeTab() {
     const themeFilter = (theme: Theme) => {
         const enabled = themeLinks.includes("https://themes-delta.vercel.app/api/" + theme.name);
         if (enabled && searchValue.status === SearchStatus.DISABLED) return false;
+        if (!theme.tags.includes("theme") && searchValue.status === SearchStatus.THEME) return false;
+        if (!theme.tags.includes("snippet") && searchValue.status === SearchStatus.SNIPPET) return false;
         if (!theme.tags.includes("dark") && searchValue.status === SearchStatus.DARK) return false;
         if (!theme.tags.includes("light") && searchValue.status === SearchStatus.LIGHT) return false;
         if (!enabled && searchValue.status === SearchStatus.ENABLED) return false;
@@ -82,6 +84,7 @@ function ThemeTab() {
         return (
             theme.name.toLowerCase().includes(v) ||
             theme.description.toLowerCase().includes(v) ||
+            theme.author.discord_name.toLowerCase().includes(v) ||
             theme.tags?.some(t => t.toLowerCase().includes(v))
         );
     };
@@ -232,6 +235,8 @@ function ThemeTab() {
                             <Select
                                 options={[
                                     { label: "Show All", value: SearchStatus.ALL, default: true },
+                                    { label: "Show Themes", value: SearchStatus.THEME },
+                                    { label: "Show Snippets", value: SearchStatus.SNIPPET },
                                     { label: "Show Enabled", value: SearchStatus.ENABLED },
                                     { label: "Show Disabled", value: SearchStatus.DISABLED },
                                     { label: "Show Dark", value: SearchStatus.DARK },
