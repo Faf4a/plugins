@@ -1,5 +1,6 @@
 import { FluxDispatcher, Button, TabBar, UserStore, Card, Forms, useEffect, useState, UserUtils, React, Select, TextInput, TextArea, Toasts, showToast } from "@webpack/common";
 import { SettingsTab, wrapTab } from "@components/VencordSettings/shared";
+import { Settings, useSettings } from "@api/Settings";
 import { findByPropsLazy, findLazy } from "@webpack";
 import { CodeBlock } from "@components/CodeBlock";
 import { classNameFactory } from "@api/Styles";
@@ -21,6 +22,42 @@ const UserRecord: Constructor<Partial<User>> = proxyLazy(() => UserStore.getCurr
 const TextAreaProps = findLazy(m => typeof m.textarea === "string");
 
 const API_URL = "https://themes-delta.vercel.app/api";
+
+function API_TYPE(theme, returnAll?: boolean) {
+    if (!theme) return;
+    const settings = Settings.plugins.ThemeLibrary.domain ?? false;
+
+    if (!returnAll) {
+        if (settings) {
+            return theme.source;
+        } else {
+            return `${API_URL}/${theme.name}`;
+        }
+    } else if (returnAll && !settings) {
+        return themeRequest("/themes", {
+            method: "GET",
+        }).then(async (response: Response) => {
+            const data = await response.json();
+            const themes: Theme[] = Object.values(data);
+            return themes.sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
+        }) as Promise<Theme[]>;
+    } else if (returnAll && settings) {
+        const url = "https://raw.githubusercontent.com/Faf4a/plugins/main/assets/meta.json";
+        return fetch(url).then(async (response: Response) => {
+            const data = await response.json();
+            const themes: Theme[] = Object.values(data);
+            themes.forEach(theme => {
+                if (theme.source) {
+                    theme.source = theme.source?.replace("?raw=true", "") + "?raw=true";
+                } else {
+                    // fallback in-case of snippets/themes not having source linking to github
+                    theme.source = `${API_URL}/${theme.name}`;
+                }
+            });
+            return themes.sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
+        }) as Promise<Theme[]>;
+    }
+}
 
 async function themeRequest(path: string, options: RequestInit = {}) {
     return fetch(API_URL + path, {
@@ -71,7 +108,7 @@ function ThemeTab() {
     const onStatusChange = (status: SearchStatus) => setSearchValue(prev => ({ ...prev, status }));
 
     const themeFilter = (theme: Theme) => {
-        const enabled = themeLinks.includes("https://themes-delta.vercel.app/api/" + theme.name);
+        const enabled = themeLinks.includes(API_TYPE(theme));
         if (enabled && searchValue.status === SearchStatus.DISABLED) return false;
         if (!theme.tags.includes("theme") && searchValue.status === SearchStatus.THEME) return false;
         if (!theme.tags.includes("snippet") && searchValue.status === SearchStatus.SNIPPET) return false;
@@ -90,21 +127,19 @@ function ThemeTab() {
     };
 
     useEffect(() => {
-        themeRequest("/themes", {
-            method: "GET",
-        }).then(async (response: Response) => {
-            const data = await response.json();
-            const themes: Theme[] = Object.values(data);
-            themes.sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
+        Promise.resolve(API_TYPE({}, true)).then(themes => {
             setThemes(themes);
             setFilteredThemes(themes);
             setLoading(false);
+        }).catch(error => {
+            setLoading(true);
         });
     }, []);
 
     useEffect(() => {
         setThemeLinks(Vencord.Settings.themeLinks);
     }, [Vencord.Settings.themeLinks]);
+
 
     useEffect(() => {
         const filteredThemes = themes.filter(themeFilter);
@@ -169,10 +204,10 @@ function ThemeTab() {
                                             </Forms.FormText>
                                         )}
                                         <div style={{ marginTop: "8px", display: "flex", flexDirection: "row" }}>
-                                            {themeLinks.includes("https://themes-delta.vercel.app/api/" + theme.name) ? (
+                                            {themeLinks.includes(API_TYPE(theme)) ? (
                                                 <Button
                                                     onClick={() => {
-                                                        const onlineThemeLinks = themeLinks.filter(x => x !== "https://themes-delta.vercel.app/api/" + theme.name);
+                                                        const onlineThemeLinks = themeLinks.filter(x => x !== API_TYPE(theme));
                                                         setThemeLinks(onlineThemeLinks);
                                                         Vencord.Settings.themeLinks = onlineThemeLinks;
                                                     }}
@@ -186,7 +221,7 @@ function ThemeTab() {
                                             ) : (
                                                 <Button
                                                     onClick={() => {
-                                                        const onlineThemeLinks = [...themeLinks, `https://themes-delta.vercel.app/api/${theme.name}`];
+                                                        const onlineThemeLinks = [...themeLinks, API_TYPE(theme)];
                                                         setThemeLinks(onlineThemeLinks);
                                                         Vencord.Settings.themeLinks = onlineThemeLinks;
                                                     }}
@@ -210,7 +245,7 @@ function ThemeTab() {
                                                 Theme Info
                                             </Button>
                                             <Button
-                                                onClick={() => VencordNative.native.openExternal(`https://themes-delta.vercel.app/api/${theme.name}`)}
+                                                onClick={() => VencordNative.native.openExternal(API_TYPE(theme).replace("?raw=true", ""))}
                                                 size={Button.Sizes.MEDIUM}
                                                 color={Button.Colors.LINK}
                                                 look={Button.Looks.LINK}
@@ -290,10 +325,10 @@ function ThemeTab() {
                                             </Forms.FormText>
                                         )}
                                         <div style={{ marginTop: "8px", display: "flex", flexDirection: "row" }}>
-                                            {themeLinks.includes("https://themes-delta.vercel.app/api/" + theme.name) ? (
+                                            {themeLinks.includes(API_TYPE(theme)) ? (
                                                 <Button
                                                     onClick={() => {
-                                                        const onlineThemeLinks = themeLinks.filter(x => x !== "https://themes-delta.vercel.app/api/" + theme.name);
+                                                        const onlineThemeLinks = themeLinks.filter(x => x !== API_TYPE(theme));
                                                         setThemeLinks(onlineThemeLinks);
                                                         Vencord.Settings.themeLinks = onlineThemeLinks;
                                                     }}
@@ -307,7 +342,7 @@ function ThemeTab() {
                                             ) : (
                                                 <Button
                                                     onClick={() => {
-                                                        const onlineThemeLinks = [...themeLinks, `https://themes-delta.vercel.app/api/${theme.name}`];
+                                                        const onlineThemeLinks = [...themeLinks, API_TYPE(theme)];
                                                         setThemeLinks(onlineThemeLinks);
                                                         Vencord.Settings.themeLinks = onlineThemeLinks;
                                                     }}
@@ -331,7 +366,7 @@ function ThemeTab() {
                                                 Theme Info
                                             </Button>
                                             <Button
-                                                onClick={() => VencordNative.native.openExternal(`https://themes-delta.vercel.app/api/${theme.name}`)}
+                                                onClick={() => VencordNative.native.openExternal(API_TYPE(theme).replace("?raw=true", ""))}
                                                 size={Button.Sizes.MEDIUM}
                                                 color={Button.Colors.LINK}
                                                 look={Button.Looks.LINK}
