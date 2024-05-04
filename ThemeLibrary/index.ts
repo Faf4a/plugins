@@ -1,7 +1,17 @@
-import definePlugin from "@utils/types";
+import definePlugin, { OptionType } from "@utils/types";
+import { definePluginSettings } from "@api/Settings";
+
+const settings = definePluginSettings({
+    domain: {
+        type: OptionType.BOOLEAN,
+        default: false,
+        description: "Use Github instead of the default domain for themes",
+        restartNeeded: false
+    },
+});
 
 export default definePlugin({
-    name: "Theme Library",
+    name: "ThemeLibrary",
     description: "A library of themes for Vencord.",
     authors: [{
         name: "Fafa",
@@ -31,5 +41,6 @@ export default definePlugin({
         const i = customSettingsSections.findIndex(section => section({}).id === "ThemeSection");
 
         if (i !== -1) customSettingsSections.splice(i, 1);
-    }
+    },
+    settings
 });
