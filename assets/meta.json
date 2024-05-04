@@ -2285,5 +2285,25 @@
         "downloads": "0",
         "content": "LyoqCiAqIEBuYW1lIE5leHVzIFJlbWFzdGVyZWQKICogQGRlc2NyaXB0aW9uIFRoZSB0aGVtZSB0aGF0IG5ldmVyIGNhbWUgdG8gYmUsIGFuZCBwcmVkZWNlc3NvciB0byBDeWFuLCByZW1hc3RlcmVkIGFuZCBiZXR0ZXIgdGhhbiBiZWZvcmUKICogQGF1dGhvciBEYUJsdUxpdGUKICogQGF1dGhvcklkIDU4MjE3MDAwNzUwNTczMTU5NAogKiBAdmVyc2lvbiAxLjAuMAogKiBAaW52aXRlIDY3VlJwU2p6eFUKICovCgovKioKICogQ29udHJpYnV0b3JzCiAqID09PT09PT09PT09PQogKiBEYXJrZW5lZCBjb2xvciBzY2hlbWU6IG1hZW5EaXNlYXNlCiovCgpAaW1wb3J0IHVybCgiaHR0cHM6Ly9kYWJsdWxpdGUuZ2l0aHViLmlvL05leHVzUmVtYXN0ZXJlZC9pbXBvcnQuY3NzIik7Cgo6cm9vdCB7CgktLW5leHVzLWVsZXZhdGlvbi1zaGFkb3c6IDAgMCAwIDEuNXB4IHZhcigtLW5leHVzLWFjY2VudC1jb2xvciksIDAgMnB4IDEwcHggMCByZ2IoMCAwIDAgLyA2MCUpOwoJLS1uZXh1cy1mb250OiAnTW9udHNlcnJhdCcsICdPcGVuIFNhbnMnOwoJLS1uZXh1cy1hY2NlbnQtY29sb3I6IHZhcigtLWJyYW5kLTUwMCk7CgktLW5leHVzLWJsdXItcmFkaXVzOiAxMHB4OwoJLS1uZXh1cy1zdGF0dXMtbWFzay1iYWNrZ3JvdW5kOiB2YXIoLS1wcm9maWxlLWJvZHktYmFja2dyb3VuZC1jb2xvcik7CgktLXdpbmRvdy1tYXJnaW46IDg7CgktLXdpbmRvdy1ib3JkZXItcmFkaXVzOiA4cHg7Cn0=",
         "id": 47868
-    }
+    },
+    {
+        "name": "BotTag Fixer",
+        "description": "Fixes the new APP tag on bots back to BOT",
+        "type": "snippet",
+        "version": "1.0.0",
+        "author": {
+          "discord_snowflake": "648314224174432267",
+          "discord_name": "wagigaming",
+          "github_name": null
+        },
+        "tags": [
+          "snippet"
+        ],
+        "thumbnail_url": "https://themes-delta.vercel.app/api/optimized-images/BotTag Fixer_56260.png",
+        "release_date": "2024-05-02T20:49:24.960Z",
+        "guild": null,
+        "downloads": "0",
+        "content": "LyoqCiAgICAqIEBuYW1lIEJvdFRhZyBGaXhlcgogICAgKiBAYXV0aG9yIFdhZ2kKICAgICogQHZlcnNpb24gMS4wLjAKICAgICogQGRlc2NyaXB0aW9uIEZpeGVzIHRoZSBuZXcgQVBQIHRhZyBvbiBib3RzIGJhY2sgdG8gQk9UCiAgICovCiAgICAKICAgLmJvdFRleHRfZGFmZjU2IHsgICAgCiAgICAgICBmb250LXNpemU6IDEwcHg7CiAgICAgICB2aXNpYmlsaXR5OiBoaWRkZW47CiAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7CiAgICAgICAKICAgfQogICAKICAgLmJvdFRleHRfZGFmZjU2OjpiZWZvcmUgeyAKICAgICAgIGNvbnRlbnQ6ICdCT1QnOwogICAgICAgdmlzaWJpbGl0eTogdmlzaWJsZTsKICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTsKICAgfQ==",
+        "id": 56260
+  }
 ]
