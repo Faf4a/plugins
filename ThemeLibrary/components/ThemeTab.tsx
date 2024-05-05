@@ -438,27 +438,15 @@ function SubmitThemes() {
                                     content: btoa(themeContent),
                                 }),
                             }).then((response) => {
-                                if (!response.ok) {
-                                    Toasts.show({
-                                        message: "Failed to submit theme, try again later. Probably ratelimit, wait 2 minutes.",
-                                        id: Toasts.genId(),
-                                        type: Toasts.Type.FAILURE,
-                                        options: {
-                                            duration: 5e3,
-                                            position: Toasts.Position.BOTTOM
-                                        }
-                                    });
-                                } else {
-                                    Toasts.show({
-                                        message: "Submitted your theme! Review can take up to 24 hours.",
-                                        type: Toasts.Type.SUCCESS,
-                                        id: Toasts.genId(),
-                                        options: {
-                                            duration: 5e3,
-                                            position: Toasts.Position.BOTTOM
-                                        }
-                                    });
-                                }
+                                Toasts.show({
+                                    message: "Submitted your theme! Review can take up to 24 hours.",
+                                    type: Toasts.Type.SUCCESS,
+                                    id: Toasts.genId(),
+                                    options: {
+                                        duration: 5e3,
+                                        position: Toasts.Position.BOTTOM
+                                    }
+                                });
                             }).catch(() => {
                                 showToast("Failed to submit theme, try later", Toasts.Type.FAILURE);
                             });
