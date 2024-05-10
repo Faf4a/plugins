@@ -1,8 +1,8 @@
 # Vencord Plugins
 
 ### Current Plugins:
-- [x] [Theme Library](https://github.com/Faf4a/plugins/tree/main/ThemeLibrary)
-
+- [x] [ThemeLibrary](https://github.com/Faf4a/plugins/tree/main/ThemeLibrary)
+- [x] [ReactionLogger](https://github.com/Faf4a/plugins/tree/main/ReactionLogger)
 <br/>
 
 ## How to Install?
