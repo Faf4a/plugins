@@ -22,8 +22,8 @@
 }
 
 .vce-theme-info-preview img {
-    width: 1080px;
-    height: 1920px;
+    width: 1080px !important;
+    height: 1920px !important;
     object-fit: cover;
 }
 

@@ -1,11 +1,16 @@
-import { ModalContent, ModalFooter, ModalHeader, ModalRoot } from "@utils/modal";
-import { Button, Forms, React, showToast, Toasts, Clipboard } from "@webpack/common";
-import { findComponentByCodeLazy } from "@webpack";
+/*
+ * Vencord, a Discord client mod
+ * Copyright (c) 2024 Vendicated and contributors
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 import { CodeBlock } from "@components/CodeBlock";
-import { openInviteModal } from "@utils/discord";
 import { Heart } from "@components/Heart";
+import { openInviteModal } from "@utils/discord";
 import { Margins } from "@utils/margins";
-import { openModal } from "@utils/modal";
+import { ModalContent, ModalFooter, ModalHeader, ModalRoot, ModalSize, openModal } from "@utils/modal";
+import { findComponentByCodeLazy } from "@webpack";
+import { Button, Clipboard, Forms, React, showToast, Toasts } from "@webpack/common";
 
 import { ThemeInfoModalProps } from "../types";
 
@@ -46,7 +51,7 @@ export const ThemeInfoModal: React.FC<ThemeInfoModalProps> = ({ author, theme, .
                         <Forms.FormTitle tag="h5" style={{ marginTop: "10px" }}>Source</Forms.FormTitle>
                         <Forms.FormText>
                             <Button onClick={() => openModal(modalProps => (
-                                <ModalRoot {...modalProps}>
+                                <ModalRoot {...modalProps} size={ModalSize.LARGE}>
                                     <ModalHeader>
                                         <Forms.FormTitle tag="h4">Theme Source</Forms.FormTitle>
                                     </ModalHeader>

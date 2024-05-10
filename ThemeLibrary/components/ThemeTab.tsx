@@ -1,20 +1,29 @@
-import { FluxDispatcher, Button, TabBar, UserStore, Card, Forms, useEffect, useState, UserUtils, React, Select, TextInput, TextArea, Toasts, showToast } from "@webpack/common";
-import { SettingsTab, wrapTab } from "@components/VencordSettings/shared";
-import { Settings, useSettings } from "@api/Settings";
-import { findByPropsLazy, findLazy } from "@webpack";
-import { CodeBlock } from "@components/CodeBlock";
-import { classNameFactory } from "@api/Styles";
-import { User } from "discord-types/general";
-import { generateId } from "@api/Commands";
-import { openModal } from "@utils/modal";
-import { Margins } from "@utils/margins";
-import { proxyLazy } from "@utils/lazy";
-import { Constructor } from "type-fest";
-import { classes } from "@utils/misc";
+/*
+ * Vencord, a Discord client mod
+ * Copyright (c) 2024 Vendicated and contributors
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
 
-import { Theme, SearchStatus, TabItem } from "../types";
-import { ThemeInfoModal } from "./ThemeInfoModal";
+/* eslint-disable indent */
 import "./styles.css";
+
+import { generateId } from "@api/Commands";
+import { Settings } from "@api/Settings";
+import { classNameFactory } from "@api/Styles";
+import { CodeBlock } from "@components/CodeBlock";
+import { OpenExternalIcon } from "@components/Icons";
+import { SettingsTab, wrapTab } from "@components/VencordSettings/shared";
+import { proxyLazy } from "@utils/lazy";
+import { Margins } from "@utils/margins";
+import { classes } from "@utils/misc";
+import { openModal } from "@utils/modal";
+import { findByPropsLazy, findLazy } from "@webpack";
+import { Button, Card, FluxDispatcher, Forms, React, Select, showToast, TabBar, TextArea, TextInput, Toasts, useEffect, UserStore, UserUtils, useState } from "@webpack/common";
+import { User } from "discord-types/general";
+import { Constructor } from "type-fest";
+
+import { SearchStatus, TabItem, Theme } from "../types";
+import { ThemeInfoModal } from "./ThemeInfoModal";
 
 const cl = classNameFactory("vc-plugins-");
 const InputStyles = findByPropsLazy("inputDefault", "inputWrapper");
@@ -23,39 +32,29 @@ const TextAreaProps = findLazy(m => typeof m.textarea === "string");
 
 const API_URL = "https://themes-delta.vercel.app/api";
 
+async function fetchThemes(url: string): Promise<Theme[]> {
+    const response = await fetch(url);
+    const data = await response.json();
+    const themes: Theme[] = Object.values(data);
+    themes.forEach(theme => {
+        if (!theme.source) {
+            theme.source = `${API_URL}/${theme.name}`;
+        } else {
+            theme.source = theme.source.replace("?raw=true", "") + "?raw=true";
+        }
+    });
+    return themes.sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
+}
+
 function API_TYPE(theme, returnAll?: boolean) {
     if (!theme) return;
     const settings = Settings.plugins.ThemeLibrary.domain ?? false;
 
-    if (!returnAll) {
-        if (settings) {
-            return theme.source;
-        } else {
-            return `${API_URL}/${theme.name}`;
-        }
-    } else if (returnAll && !settings) {
-        return themeRequest("/themes", {
-            method: "GET",
-        }).then(async (response: Response) => {
-            const data = await response.json();
-            const themes: Theme[] = Object.values(data);
-            return themes.sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
-        }) as Promise<Theme[]>;
-    } else if (returnAll && settings) {
-        const url = "https://raw.githubusercontent.com/Faf4a/plugins/main/assets/meta.json";
-        return fetch(url).then(async (response: Response) => {
-            const data = await response.json();
-            const themes: Theme[] = Object.values(data);
-            themes.forEach(theme => {
-                if (theme.source) {
-                    theme.source = theme.source?.replace("?raw=true", "") + "?raw=true";
-                } else {
-                    // fallback in-case of snippets/themes not having source linking to github
-                    theme.source = `${API_URL}/${theme.name}`;
-                }
-            });
-            return themes.sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
-        }) as Promise<Theme[]>;
+    if (returnAll) {
+        const url = settings ? "https://raw.githubusercontent.com/Faf4a/plugins/main/assets/meta.json" : `${API_URL}/themes`;
+        return fetchThemes(url);
+    } else {
+        return settings ? theme.source : `${API_URL}/${theme.name}`;
     }
 }
 
@@ -131,7 +130,8 @@ function ThemeTab() {
             setThemes(themes);
             setFilteredThemes(themes);
             setLoading(false);
-        }).catch(error => {
+        }).catch(err => {
+            console.error("Failed to load 'ThemeLibrary'", err);
             setLoading(true);
         });
     }, []);
@@ -249,8 +249,9 @@ function ThemeTab() {
                                                 size={Button.Sizes.MEDIUM}
                                                 color={Button.Colors.LINK}
                                                 look={Button.Looks.LINK}
+                                                style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
                                             >
-                                                View Source
+                                                View Source <OpenExternalIcon height={16} width={16} />
                                             </Button>
                                         </div>
                                     </div>
@@ -307,7 +308,8 @@ function ThemeTab() {
                                 <img
                                     role="presentation"
                                     src={theme.thumbnail_url}
-                                    alt="Theme Preview Image"
+                                    loading="lazy"
+                                    alt={theme.name}
                                     className="vce-theme-info-preview"
                                 />
                                 <div className="vce-theme-info">
@@ -370,8 +372,9 @@ function ThemeTab() {
                                                 size={Button.Sizes.MEDIUM}
                                                 color={Button.Colors.LINK}
                                                 look={Button.Looks.LINK}
+                                                style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
                                             >
-                                                View Source
+                                                View Source <OpenExternalIcon height={16} width={16} />
                                             </Button>
                                         </div>
                                     </div>
@@ -383,7 +386,7 @@ function ThemeTab() {
             </>
         </div >
     );
-};
+}
 
 function SubmitThemes() {
     const currentUser = UserStore.getCurrentUser();
@@ -429,24 +432,36 @@ function SubmitThemes() {
                             if (themeContent.length < 50) return showToast("Theme content is too short, must be above 50", Toasts.Type.FAILURE);
 
                             themeRequest("/submit/theme", {
-                                method: 'POST',
+                                method: "POST",
                                 headers: {
-                                    'Content-Type': 'application/json',
+                                    "Content-Type": "application/json",
                                 },
                                 body: JSON.stringify({
                                     userId: `${currentUser.id}`,
                                     content: btoa(themeContent),
                                 }),
-                            }).then((response) => {
-                                Toasts.show({
-                                    message: "Submitted your theme! Review can take up to 24 hours.",
-                                    type: Toasts.Type.SUCCESS,
-                                    id: Toasts.genId(),
-                                    options: {
-                                        duration: 5e3,
-                                        position: Toasts.Position.BOTTOM
-                                    }
-                                });
+                            }).then(response => {
+                                if (!response.ok) {
+                                    Toasts.show({
+                                        message: "Failed to submit theme, try again later. Probably ratelimit, wait 2 minutes.",
+                                        id: Toasts.genId(),
+                                        type: Toasts.Type.FAILURE,
+                                        options: {
+                                            duration: 5e3,
+                                            position: Toasts.Position.BOTTOM
+                                        }
+                                    });
+                                } else {
+                                    Toasts.show({
+                                        message: "Submitted your theme! Review can take up to 24 hours.",
+                                        type: Toasts.Type.SUCCESS,
+                                        id: Toasts.genId(),
+                                        options: {
+                                            duration: 5e3,
+                                            position: Toasts.Position.BOTTOM
+                                        }
+                                    });
+                                }
                             }).catch(() => {
                                 showToast("Failed to submit theme, try later", Toasts.Type.FAILURE);
                             });
