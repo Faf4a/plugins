@@ -29,7 +29,8 @@ git clone https://github.com/Faf4a/plugins
 ```
 
 1. Move the wanted plugin from the created `plugins` folder into the `userplugins` folder.
-2. Ensure it's structured as `userplugins/[PLUGIN NAME]/[...files]`
+2. (If the `userplugins` folder doesn't exist, create it in the `/src` folder!)
+3. Ensure it's structured as `src/userplugins/[PLUGIN NAME]/[...files]`
 
 ##
 #### Installing Dependencies
