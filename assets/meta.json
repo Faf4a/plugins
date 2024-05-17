@@ -2627,8 +2627,8 @@
     "name": "Private Channel recolor",
     "file_name": "PrivateChannelrecolor.theme.css",
     "type": "snippet",
-    "description": "recolors the icon for Private channels so they are easier to see/notice",
-    "version": "2.0",
+    "description": "Recolors the icon for Private channels so they are easier to see/notice",
+    "version": "3.0",
     "author": {
       "discord_snowflake": "929208515883569182",
       "discord_name": "krystalskullofficial",
@@ -2639,9 +2639,9 @@
       "channels"
     ],
     "thumbnail_url": "https://themes-delta.vercel.app/api/thumbnail/Private Channel recolor_10468692.png",
-    "release_date": "2024-04-05T18:50:29.300Z",
+    "release_date": "2024-05-17T01:13:46.756Z",
     "guild": null,
-    "content": "Ci8qKgoqIEBuYW1lIFByaXZhdGUgQ2hhbm5lbCByZWNvbG9yCiogQGF1dGhvciBrcnlzdGFsc2t1bGxvZmZpY2lhbAoqIEB2ZXJzaW9uIDIuMAoqIEBkZXNjcmlwdGlvbiByZWNvbG9ycyB0aGUgaWNvbiBmb3IgUHJpdmF0ZSBjaGFubmVscyBzbyB0aGV5IGFyZSBlYXNpZXIgdG8gc2VlL25vdGljZQoqLwoKLyotLS1Mb2NrIEljb24gUmVjb2xvci0tLSovCi5pY29uX182N2FiNDpoYXMocGF0aFtkXj0iTTE2IDRoLjV2Il0pIHBhdGhbZF49Ik0xNiA0aC41diJdIHsKICAgIGZpbGw6ICNmZmZhYTAgIWltcG9ydGFudDsKICAgIGJvcmRlcjogMXB4IHNvbGlkIHJlYmVjY2FwdXJwbGUgIWltcG9ydGFudDsKfQo=",
+    "content": "LyoqCiogQG5hbWUgUHJpdmF0ZSBDaGFubmVsIHJlY29sb3IKKiBAYXV0aG9yIGtyeXN0YWxza3VsbG9mZmljaWFsCiogQHZlcnNpb24gMy4wCiogQGNoYW5nZWxvZzoKKiAgIDEuMC0gTWFraW5nIG9mIHRoZSBDU1MgY29kZQoqICAgMi4wLSBkaXNjb3JkIGljb24gY2hhbmdlcwoqICAgMy4wLSBidWcgZml4IGZvciBsb2NrIHN0YWdlcyAoYmVjYXVzZSBmb3Igc29tZSByZWFzb24gdGhleSBkaWZmZXJudCBudW1iZXJzKQoqIEBkZXNjcmlwdGlvbiByZWNvbG9ycyB0aGUgaWNvbiBmb3IgUHJpdmF0ZSBjaGFubmVscyBzbyB0aGV5IGFyZSBlYXNpZXIgdG8gc2VlL25vdGljZQoqLwoKLyotLS1Mb2NrIEljb24gUmVjb2xvci0tLSovCi5pY29uX182N2FiNDpoYXMocGF0aFtkXj0iTTE2IDRoLjV2Il0pIHBhdGhbZF49Ik0xNiA0aC41diJdIHsKICAgIGZpbGw6ICNmZmZhYTAgIWltcG9ydGFudDsKICAgIGJvcmRlcjogMXB4IHNvbGlkIHJlYmVjY2FwdXJwbGUgIWltcG9ydGFudDsgfQoKLyotLS1mb3Igc3RhZ2VzKHNpbmNlIHRoZXkgdXNlIGEgZGlmZmVybnQgbG9jayBmb3Igc29tZSByZWFzb24pLS0tLSovCi5pY29uX182N2FiNDpoYXMocGF0aFtkXj0iTTE2LjUgMThIMTZhMSJdKSBwYXRoW2RePSJNMTYuNSAxOEgxNmExIl0gewogICAgZmlsbCA6ICNmZmZhYTAgIWltcG9ydGFudDsKICAgIGJvcmRlcjogMXB4IHNvbGlkIHJlYmVjY2FwdXJwbGUgIWltcG9ydGFudDsKfQ==",
     "id": 10468692
   },
   {
