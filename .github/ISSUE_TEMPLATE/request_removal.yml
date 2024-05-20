@@ -1,0 +1,46 @@
+name: Request Theme Removal
+description: Request the removal of a theme.
+title: "Theme Removal"
+labels: "removal"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this removal request! Fill in the blanks by following the steps.
+      
+  - type: dropdown
+    id: type
+    attributes:
+      label: Relation to the Theme
+      description: Please select the options that best describe your relation to the theme you want to remove.
+      options:
+        - Author
+        - Contributor
+        - User
+    validations:
+      required: true
+      
+  - type: textarea
+    id: theme-name
+    attributes:
+      label: Theme Name
+      description: Please type the name of the theme you want to request removal for.
+      placeholder: "e.g. VencordTheme"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Removal (optional)
+      description: Please describe the reason for the removal of this theme.
+      
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      description: Please confirm that all the information provided is accurate to the best of your knowledge.
+      options:
+        - label: I confirm that the information provided is accurate.
+    validations:
+      required: true
