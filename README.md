@@ -9,7 +9,7 @@
 #### ThemeLibrary Disclaimer
 
 - I do not own any of the listed themes, rights go to their respective owners.
-- If you want to remove your theme, [please open an issue](https://github.com/faf4a/plugins/issues/new&labels=removal&template=request_removal.yml) in this repository.
+- If you want to remove your theme, [please open an issue](https://github.com/Faf4a/plugins/issues/new?assignees=&labels=removal&projects=&template=request_removal.yml&title=Theme+Removal) in this repository.
 
 #### WakaTime Plugin
 
