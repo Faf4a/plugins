@@ -41,6 +41,9 @@ export default definePlugin({
             const message = MessageStore.getMessage(channelId, messageId);
             if (!message) return;
 
+            // we don't want to get notified for reactions on polls
+            if (message?.poll) return;
+
             const currentUser = UserStore.getCurrentUser();
 
             if (!currentUser) return;

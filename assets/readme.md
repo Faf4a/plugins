@@ -1,1 +1,3 @@
-You can ignore this folder ;)
+This folder will contain assets for plugins.
+
+You can safely ignore & delete it!
