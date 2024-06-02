@@ -1,15 +1,15 @@
 # Vencord Plugins
 
 ### Current Plugins:
-- [x] [ThemeLibrary](https://github.com/Faf4a/plugins/tree/main/ThemeLibrary)
-- [x] [ReactionLogger](https://github.com/Faf4a/plugins/tree/main/ReactionLogger)
-- [x] [WakaTime](https://github.com/Faf4a/plugins/tree/main/wakatime) [forked from: [wakatime/vencord-wakatime](https://github.com/wakatime/vencord-wakatime)]
+- [x] [ThemeLibrary](https://github.com/Faf4a/plugins/tree/main/userplugins/ThemeLibrary)
+- [x] [ReactionLogger](https://github.com/Faf4a/plugins/tree/main/userplugins/ReactionLogger)
+- [x] [WakaTime](https://github.com/Faf4a/plugins/tree/main/userplugins/wakatime) [forked from: [wakatime/vencord-wakatime](https://github.com/wakatime/vencord-wakatime)]
 <br/>
 
 #### ThemeLibrary Disclaimer
 
 - I do not own any of the listed themes, rights go to their respective owners.
-- If you want to remove your theme, [please open an issue](https://github.com/aoijs/aoi.js/issues/new&labels=removal&template=request_removal.yml) in this repository.
+- If you want to remove your theme, [please open an issue](https://github.com/faf4a/plugins/issues/new&labels=removal&template=request_removal.yml) in this repository.
 
 #### WakaTime Plugin
 
