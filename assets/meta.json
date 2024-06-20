@@ -2136,5 +2136,37 @@
         "name": "Purple",
         "description": "Makes discord a nice and cool purple. Enjoy!",
         "release_date": "2024-06-19T02:09:04.641Z"
+    },
+    {
+        "name": "Channels and Roles Recolor",
+        "type": "snippet",
+        "description": "Recolors the icon on Channel & Role tab so they are easier to see/notice",
+        "author": {
+            "discord_snowflake": "929208515883569182",
+            "discord_name": "krystalskullofficial",
+            "github_name": "KrstlSkll69"
+        },
+        "tags": ["snippet", "channels"],
+        "thumbnail_url": "https://themes-delta.vercel.app/api/thumbnail/Channels and Roles Recolor_121.png",
+        "release_date": "2024-05-20T01:08:10.756Z",
+        "guild": null,
+        "content": "LyoqCiogQG5hbWUgQ2hhbm5lbHMgJiBSb2xlIHJlY29sb3IKKiBAYXV0aG9yIGtyeXN0YWxza3VsbG9mZmljaWFsCiogQHZlcnNpb24gNC4wCiogQGRlc2NyaXB0aW9uIHJlY29sb3JzIHRoZSBpY29uIG9uIENoYW5uZWwgJiBSb2xlIHRhYiBzbyB0aGV5IGFyZSBlYXNpZXIgdG8gc2VlL25vdGljZQoqLwoKLyotLS0gQ2hhbm5lbCBMaXN0IEljb24gUmVjb2xvciAtLS0qLwouaWNvbl9kOGJmYjM6aGFzKHBhdGhbZF49Ik0xOC41IDIzYy44OCJdKSBwYXRoW2RePSJNMTguNSAyM2MuODgiXSB7CiAgICBjb2xvcjogdmFyKC0tZ3JlZW4tMzYwKSAhaW1wb3J0YW50OwogICAgYm9yZGVyOiAxcHggc29saWQgcmViZWNjYXB1cnBsZSAhaW1wb3J0YW50Owp9CgovKi0tLSBDaGF0IEljb24gUmVjb2xvciAtLS0qLwouaWNvbl9lNDQzMDIgcGF0aFtkXj0iTTE4LjUgMjNjLjg4Il0gewogICAgZmlsbDogdmFyKC0tZ3JlZW4tMzYwKSAhaW1wb3J0YW50Owp9",
+        "id": 121
+    },
+    {
+        "type": "theme",
+        "author": {
+            "discord_snowflake": "428188716641812481",
+            "discord_name": "catpurrrchino",
+            "github_name": "faf4a"
+        },
+        "tags": ["monospace", "dark"],
+        "thumbnail_url": "https://themes-delta.vercel.app/api/thumbnail/Monocord_122.png",
+        "guild": null,
+        "content": "LyoqCiogQG5hbWUgTW9ub2NvcmQKKiBAYXV0aG9yIGNhdHB1cnJjaGlubwoqIEBkZXNjcmlwdGlvbiBEaXNjb3JkIERlc2lnbiBiYXNlZCBvbiB0aGUgTW9ub3NwYWNlIGZvbnQKKiBAdmVyc2lvbiAxLjAuMAoqIEBzb3VyY2UgaHR0cHM6Ly9naXRodWIuY29tL2ZhZjRhL3NuaXBwZXRzCiovCgpAaW1wb3J0IHVybCgiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0ZhZjRhL3NuaXBwZXRzL21haW4vTW9ub2NvcmQvbWFpbi5jc3MiKTs=",
+        "id": 122,
+        "name": "Monocord",
+        "description": "Discord Design based on the Monospace font",
+        "release_date": "2024-06-20T08:18:04.641Z"
     }
 ]
