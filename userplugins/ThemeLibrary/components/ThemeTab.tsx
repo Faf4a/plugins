@@ -51,7 +51,7 @@ async function fetchThemes(url: string): Promise<Theme[]> {
     return themes.sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
 }
 
-function API_TYPE(theme, returnAll?: boolean) {
+function API_TYPE(theme: Theme | Object, returnAll?: boolean) {
     if (!theme) return;
     const settings = Settings.plugins.ThemeLibrary.domain ?? false;
 
@@ -59,6 +59,7 @@ function API_TYPE(theme, returnAll?: boolean) {
         const url = settings ? "https://raw.githubusercontent.com/Faf4a/plugins/main/assets/meta.json" : `${API_URL}/themes`;
         return fetchThemes(url);
     } else {
+        // @ts-ignore
         return settings ? theme.source : `${API_URL}/${theme.name}`;
     }
 }
@@ -136,25 +137,20 @@ function ThemeTab() {
         try {
             const response = await themeRequest("/likes/get");
             const data = await response.json();
-            setLikedThemes(data);
+            return data;
         } catch (err) {
             logger.error(err);
         }
     };
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                await fetchLikes();
-            } catch (err) {
-                logger.error(err);
-            }
-        };
-
         const fetchThemes = async () => {
             try {
                 const themes = await API_TYPE({}, true);
+                // fetch likes
                 setThemes(themes);
+                const likes = await fetchLikes();
+                setLikedThemes(likes);
                 setFilteredThemes(themes);
             } catch (err) {
                 logger.error(err);
@@ -162,8 +158,6 @@ function ThemeTab() {
                 setLoading(false);
             }
         };
-
-        fetchData();
         fetchThemes();
     }, []);
 
@@ -489,6 +483,9 @@ function SubmitThemes() {
             }}>
                 Submit Themes
             </Forms.FormTitle>
+            <Forms.FormText>
+                If you plan on updating your theme / snippet frequently, consider using an <code>@import</code> instead!
+            </Forms.FormText>
             <Forms.FormText>
                 <TextArea
                     content={themeTemplate}
