@@ -21,7 +21,7 @@
 To install this plugin you need to clone Vencord (or whatever you use).
 
 ```bash
-git clone https://github.com/Vendicated/Vencord#main
+git clone https://github.com/Vendicated/Vencord
 ```
 > [!WARNING]
 > Ensure you have `git` installed.
