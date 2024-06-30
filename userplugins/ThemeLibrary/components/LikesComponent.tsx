@@ -29,7 +29,6 @@ export const LikesComponent = ({ themeId, likedThemes: initialLikedThemes }: { t
 
     useEffect(() => {
         const likes = getThemeLikes(themeId);
-        logger.debug("likes", likes, "for:", themeId);
         setLikesCount(likes);
     }, [likedThemes, themeId]);
 
