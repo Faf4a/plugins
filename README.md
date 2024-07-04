@@ -1,10 +1,16 @@
 # Vencord Plugins
 
 ### Current Plugins:
-- [x] [ThemeLibrary](https://github.com/Faf4a/plugins/tree/main/userplugins/ThemeLibrary)
+- [ ] [ThemeLibrary](https://github.com/Faf4a/ThemeLibrary)
 - [x] [ReactionLogger](https://github.com/Faf4a/plugins/tree/main/userplugins/ReactionLogger)
 - [x] [WakaTime](https://github.com/Faf4a/plugins/tree/main/userplugins/wakatime) [forked from: [wakatime/vencord-wakatime](https://github.com/wakatime/vencord-wakatime)]
 <br/>
+
+## ThemeLibrary has moved!
+
+https://github.com/Faf4a/ThemeLibrary
+
+---
 
 #### ThemeLibrary Disclaimer
 
