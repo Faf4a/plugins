@@ -2,13 +2,19 @@
 
 ### Current Plugins:
 - [ ] [ThemeLibrary](https://github.com/Faf4a/ThemeLibrary)
-- [x] [ReactionLogger](https://github.com/Faf4a/plugins/tree/main/userplugins/ReactionLogger)
+- [ ] [ReactionLogger](https://discord.com)
 - [x] [WakaTime](https://github.com/Faf4a/plugins/tree/main/userplugins/wakatime) [forked from: [wakatime/vencord-wakatime](https://github.com/wakatime/vencord-wakatime)]
 <br/>
 
 ## ThemeLibrary has moved!
 
 https://github.com/Faf4a/ThemeLibrary
+
+---
+
+## ReactionLogger deprecated!
+
+This is in-development by discord! Therefore no longer maintained.
 
 ---
 
